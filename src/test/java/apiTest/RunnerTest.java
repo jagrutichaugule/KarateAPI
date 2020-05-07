@@ -16,6 +16,7 @@ import com.intuit.karate.Runner;
 
 import net.masterthought.cucumber.Configuration;
 import net.masterthought.cucumber.ReportBuilder;
+import reusableUtilities.MandatoryTagHook;
 
 
 @KarateOptions(features="classpath:featureFiles", tags="~@ignore")
@@ -24,7 +25,10 @@ public class RunnerTest {
 
     @Test
     public void testParallel() {
-    	Results results = Runner.parallel(getClass(), 2);
+    	//without hooks
+    	//Results results = Runner.parallel(getClass(), 2);
+    	//with hooks
+    	Results results = Runner.path("classpath:featureFiles").hook(new MandatoryTagHook()).parallel(2);
         generateReport(results.getReportDir());
         assertTrue(results.getErrorMessages(), results.getFailCount() == 0);
     }

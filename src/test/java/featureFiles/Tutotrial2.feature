@@ -1,12 +1,12 @@
 Feature: Get Customer Account Details
 
 Background: 
-		* def expectedOutput1 = read('../dataResources/responseFiles/SingleUserResult.json')
-		* def expectedFormat = read('../dataResources/requestFiles/format.json')
+		* def expectedOutput1 = read('../responseFiles/SingleUserResult.json')
+		* def expectedFormat = read('../requestFiles/format.json')
 		* def featureVar = read('Tutotrial.feature')
 		* def result = call featureVar
 
-
+@smoke @golden
 Scenario: user 3 details
 		
 		Given url 'https://reqres.in/api/users/3'
